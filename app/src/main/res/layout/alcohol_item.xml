@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clAlcoItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="@drawable/red_ripple">
+
+    <TextView
+        android:id="@+id/tvAlcoName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="SOME ALCO"
+        android:textColor="@color/gold"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvAlcoSmallPrice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAlcoBigPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        android:textColor="@color/gold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAlcoName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvAlcoName" />
+
+    <TextView
+        android:id="@+id/tvAlcoSmallPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        android:textColor="@color/gold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAlcoBigPrice"
+        app:layout_constraintEnd_toStartOf="@+id/tvAlcoBigPrice"
+        app:layout_constraintTop_toTopOf="@+id/tvAlcoBigPrice" />
+
+    <TextView
+        android:id="@+id/tvAlcoIngredients"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ivAlcoAdd"
+        app:layout_constraintStart_toStartOf="@+id/tvAlcoName"
+        app:layout_constraintTop_toBottomOf="@+id/tvAlcoName" />
+
+    <ImageView
+        android:id="@+id/ivAlcoAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAlcoIngredients"
+        app:layout_constraintEnd_toEndOf="@+id/tvAlcoBigPrice"
+        app:layout_constraintStart_toStartOf="@+id/tvAlcoBigPrice"
+        app:layout_constraintTop_toTopOf="@+id/tvAlcoIngredients"
+        app:srcCompat="@drawable/buy_icon"
+        app:tint="@color/green_lighten_2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

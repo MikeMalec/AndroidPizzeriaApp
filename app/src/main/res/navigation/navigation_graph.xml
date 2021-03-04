@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/pizzaFragment">
+
+    <fragment
+        android:id="@+id/burgerFragment"
+        android:name="com.example.pizzeriaapp.ui.fragments.burger.BurgerFragment"
+        android:label="Burgery">
+        <action
+            android:id="@+id/action_burgerFragment_to_burgerOrderDialog"
+            app:destination="@id/burgerOrderDialog" />
+    </fragment>
+    <fragment
+        android:id="@+id/pastaFragment"
+        android:name="com.example.pizzeriaapp.ui.fragments.sharedfood.SharedFoodFragment"
+        android:label="Pitty/Makarony/Sałatki">
+        <action
+            android:id="@+id/action_pastaFragment_to_pastaOrderDialog"
+            app:destination="@id/pastaOrderDialog" />
+        <action
+            android:id="@+id/action_pastaFragment_to_pitaOrderDialog"
+            app:destination="@id/pitaOrderDialog" />
+        <action
+            android:id="@+id/action_pastaFragment_to_saladOrderDialog"
+            app:destination="@id/saladOrderDialog" />
+    </fragment>
+    <fragment
+        android:id="@+id/pizzaFragment"
+        android:name="com.example.pizzeriaapp.ui.fragments.pizza.PizzaFragment"
+        android:label="Pizza">
+        <action
+            android:id="@+id/action_pizzaFragment_to_pizzaOrderDialog"
+            app:destination="@id/pizzaOrderDialog" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoppingCartFragment"
+        android:name="com.example.pizzeriaapp.ui.fragments.shopppingcart.ShoppingCartFragment"
+        android:label="Koszyk">
+        <action
+            android:id="@+id/action_shoppingCartFragment_to_orderInfoFragment"
+            app:destination="@id/orderInfoFragment" />
+        <action
+            android:id="@+id/action_shoppingCartFragment_to_authFragment"
+            app:destination="@id/authFragment" />
+        <action
+            android:id="@+id/action_shoppingCartFragment_to_userOrdersFragment"
+            app:destination="@id/userOrdersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/beverageFragment"
+        android:name="com.example.pizzeriaapp.ui.fragments.beverage.BeverageFragment"
+        android:label="Napoje">
+        <action
+            android:id="@+id/action_beverageFragment_to_saladOrderDialog"
+            app:destination="@id/saladOrderDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/pizzaOrderDialog"
+        android:name="com.example.pizzeriaapp.ui.fragments.pizza.dialog.PizzaOrderDialog"
+        android:label="PizzaOrderDialog">
+        <argument
+            android:name="pizza"
+            app:argType="com.example.pizzeriaapp.data.product.Pizza" />
+    </dialog>
+    <dialog
+        android:id="@+id/burgerOrderDialog"
+        android:name="com.example.pizzeriaapp.ui.fragments.burger.dialog.BurgerOrderDialog"
+        android:label="BurgerOrderDialog">
+        <argument
+            android:name="burger"
+            app:argType="com.example.pizzeriaapp.data.product.Burger" />
+    </dialog>
+    <dialog
+        android:id="@+id/pastaOrderDialog"
+        android:name="com.example.pizzeriaapp.ui.fragments.sharedfood.pasta.PastaOrderDialog"
+        android:label="PastaOrderDialog">
+        <argument
+            android:name="pasta"
+            app:argType="com.example.pizzeriaapp.data.product.Pasta" />
+    </dialog>
+    <dialog
+        android:id="@+id/pitaOrderDialog"
+        android:name="com.example.pizzeriaapp.ui.fragments.sharedfood.pita.PitaOrderDialog"
+        android:label="PitaOrderDialog">
+        <argument
+            android:name="pita"
+            app:argType="com.example.pizzeriaapp.data.product.Pita" />
+    </dialog>
+    <dialog
+        android:id="@+id/saladOrderDialog"
+        android:name="com.example.pizzeriaapp.ui.fragments.sharedfood.salad.OrderDialog"
+        android:label="SaladOrderDialog">
+        <argument
+            android:name="salad"
+            app:argType="com.example.pizzeriaapp.data.product.Salad"
+            app:nullable="true" />
+        <argument
+            android:name="beverage"
+            app:argType="com.example.pizzeriaapp.data.product.Beverage"
+            app:nullable="true" />
+    </dialog>
+    <fragment
+        android:id="@+id/orderInfoFragment"
+        android:name="com.example.pizzeriaapp.ui.fragments.order.OrderInfoFragment"
+        android:label="OrderInfoFragment">
+        <action
+            android:id="@+id/action_orderInfoFragment_to_orderSummaryFragment"
+            app:destination="@id/orderSummaryFragment" />
+        <action
+            android:id="@+id/action_orderInfoFragment_to_authFragment"
+            app:destination="@id/authFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderSummaryFragment"
+        android:name="com.example.pizzeriaapp.ui.fragments.order.OrderSummaryFragment"
+        android:label="OrderSummaryFragment">
+        <action
+            android:id="@+id/action_orderSummaryFragment_to_pizzaFragment"
+            app:popUpTo="@id/pizzaFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/pizzaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.example.pizzeriaapp.ui.fragments.auth.AuthFragment"
+        android:label="AuthFragment" >
+        <argument
+            android:name="navigatesFromInfoFragment"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <action
+            android:id="@+id/action_authFragment_to_orderInfoFragment"
+            app:destination="@id/orderInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userOrdersFragment"
+        android:name="com.example.pizzeriaapp.ui.fragments.userorders.UserOrdersFragment"
+        android:label="UserOrdersFragment" />
+</navigation>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Pizzeria</string>
+    <string name="delete">Delete</string>
+    <string name="zap_a">Zapłać</string>
+    <string name="moje_zam_wienia">Moje zamówienia</string>
+    <string name="wyloguj">Wyloguj się</string>
+    <string name="register">Rejestracja</string>
+    <string name="login">Logowanie</string>
+    <string-array name="cart_item_actions">
+        <item>Usuń z koszyka</item>
+    </string-array>
+</resources>

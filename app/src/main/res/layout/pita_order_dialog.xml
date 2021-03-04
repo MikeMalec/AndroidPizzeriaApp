@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/blacky">
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Wybierz rozmiar"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPitaName" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/cgPitaType"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddPitaToCart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView19"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/pitaSmall"
+            style="@style/CustomChipStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mała"
+            android:textAlignment="center" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/pitaBig"
+            style="@style/CustomChipStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Duża"
+            android:textAlignment="center" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddPitaToCart"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_background"
+        android:text="Zatwierdź"
+        android:textSize="10sp"
+        app:backgroundTint="@color/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cgBurgerType" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCancelPita"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rounded_background"
+        android:text="Anuluj"
+        android:textSize="10sp"
+        app:backgroundTint="@color/red"
+        app:layout_constraintBottom_toBottomOf="@+id/btnAddPitaToCart"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddPitaToCart"
+        app:layout_constraintTop_toTopOf="@+id/btnAddPitaToCart" />
+
+    <TextView
+        android:id="@+id/tvPitaName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textColor="@color/gold"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

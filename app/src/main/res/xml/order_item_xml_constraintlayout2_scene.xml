@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="300">
+       <KeyFrameSet>
+           <KeyAttribute
+               motion:motionTarget="@+id/ivMore"
+               motion:framePosition="100"
+               android:rotation="180" />
+       </KeyFrameSet>
+        <OnClick motion:targetId="@+id/ivMore" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/constraintLayout4"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            motion:layout_constraintTop_toBottomOf="@+id/ivMore"
+            motion:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/ivMore"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:visibility="visible"
+            android:layout_marginEnd="16dp"
+            motion:layout_constraintTop_toBottomOf="@+id/tvOrderPrice"
+            android:layout_marginTop="8dp" />
+        <Constraint
+            android:id="@+id/constraintLayout4"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/ivMore"
+            motion:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+</MotionScene>

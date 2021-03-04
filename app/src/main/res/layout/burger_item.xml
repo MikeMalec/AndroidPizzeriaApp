@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clBurgerItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:foreground="@drawable/red_ripple">
+
+    <TextView
+        android:id="@+id/tvBurgerName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="GRILLBURGER"
+        android:textColor="@color/gold"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvBurgerSoloPrice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvBurgerIngredients"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvBurgerName"
+        app:layout_constraintTop_toBottomOf="@+id/tvBurgerName" />
+
+    <TextView
+        android:id="@+id/tvBurgerSetPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="50"
+        android:textColor="@color/gold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvBurgerName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvBurgerName" />
+
+    <TextView
+        android:id="@+id/tvBurgerSoloPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="12"
+        android:textColor="@color/gold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvBurgerName"
+        app:layout_constraintEnd_toStartOf="@+id/tvBurgerSetPrice"
+        app:layout_constraintTop_toTopOf="@+id/tvBurgerName" />
+</androidx.constraintlayout.widget.ConstraintLayout>

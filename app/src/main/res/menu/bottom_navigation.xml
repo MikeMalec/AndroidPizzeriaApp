@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/pizzaFragment"
+        android:icon="@drawable/pizza_icon_2"
+        android:title=""
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/burgerFragment"
+        android:icon="@drawable/burger"
+        android:title=""
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/pastaFragment"
+        android:icon="@drawable/noodle"
+        android:title=""
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/beverageFragment"
+        android:icon="@drawable/soda"
+        android:title=""
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/shoppingCartFragment"
+        android:icon="@drawable/cart"
+        android:title=""
+        app:showAsAction="always" />
+</menu>
