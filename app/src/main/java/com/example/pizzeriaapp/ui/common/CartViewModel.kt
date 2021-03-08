@@ -18,16 +18,19 @@ import com.example.pizzeriaapp.data.preferences.DataStoreRepository
 import com.example.pizzeriaapp.data.preferences.UserInfo
 import com.example.pizzeriaapp.data.usecases.CreateOrder
 import com.example.pizzeriaapp.data.utils.Resource
-import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Named
 
 class CartViewModel @ViewModelInject constructor(
     val tokenManager: TokenManager,
     val requestResponseTokenValidator: RequestResponseTokenValidator,
     val dataStoreRepository: DataStoreRepository,
-    val createOrder: CreateOrder
+    val createOrder: CreateOrder,
+    @Named("DISPATCHER")
+    val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     val cartItems = MutableLiveData<List<CartItemInterface>>()
@@ -39,11 +42,11 @@ class CartViewModel @ViewModelInject constructor(
     lateinit var info: UserInfo
 
     init {
-        observeUserInfo()
+//        observeUserInfo()
     }
 
     private fun observeUserInfo() {
-        viewModelScope.launch(IO) {
+        viewModelScope.launch(dispatcher) {
             dataStoreRepository.getUserInfo().collect {
                 info = it
             }
@@ -56,7 +59,7 @@ class CartViewModel @ViewModelInject constructor(
         cityName: String,
         phoneNumber: String
     ) {
-        viewModelScope.launch(IO) {
+        viewModelScope.launch(dispatcher) {
             dataStoreRepository.saveUserInfo(streetName, houseNumber, cityName, phoneNumber)
         }
     }
@@ -163,7 +166,7 @@ class CartViewModel @ViewModelInject constructor(
     }
 
     fun startCheckout() {
-        viewModelScope.launch(IO) {
+        viewModelScope.launch(dispatcher) {
             if (tokenManager.token !== null) {
                 createOrder.createOrder(
                     tokenManager.token!!,

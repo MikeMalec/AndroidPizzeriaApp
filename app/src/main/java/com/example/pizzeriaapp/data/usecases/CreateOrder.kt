@@ -22,7 +22,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class CreateOrder @Inject constructor(val productRemoteDataSource: ProductRemoteDataSource) {
+open class CreateOrder @Inject constructor(val productRemoteDataSource: ProductRemoteDataSource) {
     fun createOrder(
         token: String,
         userInfo: UserInfo,

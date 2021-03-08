@@ -15,7 +15,8 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class DataStoreRepository @Inject constructor(@ApplicationContext context: Context) {
+open class DataStoreRepository @Inject constructor(@ApplicationContext context: Context) :
+    DataStoreInterface {
     private val dataStore = context.createDataStore(name = "user_info_preferences")
 
     companion object {
@@ -27,19 +28,19 @@ class DataStoreRepository @Inject constructor(@ApplicationContext context: Conte
     }
 
 
-    suspend fun saveToken(token: String) {
+    override suspend fun saveToken(token: String) {
         dataStore.edit { store ->
             store[tokenKey] = token
         }
     }
 
-    suspend fun clearToken() {
+    override suspend fun clearToken() {
         dataStore.edit { store ->
             store[tokenKey] = ""
         }
     }
 
-    fun getToken(): Flow<String?> = dataStore.data
+    override fun getToken(): Flow<String?> = dataStore.data
         .catch { exception ->
             if (exception is IOException) {
                 emit(emptyPreferences())
@@ -55,7 +56,7 @@ class DataStoreRepository @Inject constructor(@ApplicationContext context: Conte
             }
         }
 
-    suspend fun saveUserInfo(
+    override suspend fun saveUserInfo(
         streetName: String,
         houseNumber: String,
         cityName: String,
@@ -69,7 +70,7 @@ class DataStoreRepository @Inject constructor(@ApplicationContext context: Conte
         }
     }
 
-    fun getUserInfo(): Flow<UserInfo> = dataStore.data
+    override fun getUserInfo(): Flow<UserInfo> = dataStore.data
         .catch { exception ->
             if (exception is IOException) {
                 emit(emptyPreferences())
@@ -84,4 +85,18 @@ class DataStoreRepository @Inject constructor(@ApplicationContext context: Conte
                 phoneNumber = preferences[phoneNumberKey] ?: "",
             )
         }
+}
+
+interface DataStoreInterface {
+    suspend fun saveToken(token: String)
+    suspend fun clearToken()
+    fun getToken(): Flow<String?>
+    suspend fun saveUserInfo(
+        streetName: String,
+        houseNumber: String,
+        cityName: String,
+        phoneNumber: String
+    )
+
+    fun getUserInfo(): Flow<UserInfo>
 }

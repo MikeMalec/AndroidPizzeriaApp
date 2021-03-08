@@ -10,7 +10,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class RequestResponseTokenValidator @Inject constructor(val dataStoreRepository: DataStoreRepository) {
+open class RequestResponseTokenValidator @Inject constructor(val dataStoreRepository: DataStoreRepository) {
 
     private val job = Job()
 

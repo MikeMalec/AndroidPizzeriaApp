@@ -4,6 +4,7 @@ import com.example.pizzeriaapp.data.preferences.DataStoreRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -11,7 +12,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class TokenManager @Inject constructor(val dataStoreRepository: DataStoreRepository) {
+open class TokenManager @Inject constructor(val dataStoreRepository: DataStoreRepository) {
     var token: String? = null
 
     val job = Job()
