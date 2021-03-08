@@ -5,4 +5,7 @@ Related repositories:
 App for pizza shop owners that do all CRUD operations on products and displays all new orders with the use of web sockets.
 - https://github.com/MikeMalec/pizzeria_app_api
 API for both apps (node.js, express, Postgres, sequelize) 
+
 Below a short video that shows how the app works.
+
+![Alt text](pizza_app_recorded.gif?raw=true "")
