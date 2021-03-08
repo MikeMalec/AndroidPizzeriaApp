@@ -18,6 +18,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SimpleItemAnimator
 import com.example.pizzeriaapp.R
 import com.example.pizzeriaapp.data.cart.CartItemInterface
 import com.example.pizzeriaapp.data.utils.Resource
@@ -145,6 +146,7 @@ class ShoppingCartFragment : BaseFragment(R.layout.shopping_cart_fragment) {
         shoppingCartAdapter.increaseAmount = ::increaseAmount
         shoppingCartAdapter.decreaseAmount = ::decreaseAmount
         binding.rvCartItems.apply {
+            (itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
             val ll = LinearLayoutManager(requireContext())
             layoutManager = ll
             adapter = shoppingCartAdapter

@@ -3,12 +3,10 @@ package com.example.pizzeriaapp.ui.fragments.shopppingcart
 import android.graphics.Color
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.appcompat.widget.PopupMenu
-import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pizzeriaapp.R
@@ -31,30 +29,43 @@ class ShoppingCartAdapter @Inject constructor() :
     var showItemMenu = true
     var showAmountButtons = true
 
-    private val diffCallback = object : DiffUtil.ItemCallback<CartItemInterface>() {
-        override fun areItemsTheSame(
-            oldItem: CartItemInterface,
-            newItem: CartItemInterface
-        ): Boolean {
-            return oldItem.getDescription() == newItem.getDescription() && oldItem.amount == newItem.amount
+
+    var items = listOf<CartItemInterface>()
+
+    inner class CartDiffUtil(
+        private val oldList: List<CartItemInterface>,
+        private val newList: List<CartItemInterface>
+    ) : DiffUtil.Callback() {
+        override fun getOldListSize(): Int {
+            return oldList.size
         }
 
-        override fun areContentsTheSame(
-            oldItem: CartItemInterface,
-            newItem: CartItemInterface
-        ): Boolean {
-            return oldItem.getDescription() == newItem.getDescription() && oldItem.amount == newItem.amount
+        override fun getNewListSize(): Int {
+            return newList.size
         }
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition].getDescription() == newList[newItemPosition].getDescription()
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return when {
+                oldList[oldItemPosition].getDescription() == newList[newItemPosition].getDescription() -> false
+                oldList[oldItemPosition].getPrice() == newList[newItemPosition].getPrice() -> false
+                oldList[oldItemPosition].amount == newList[newItemPosition].amount -> false
+                else -> true
+            }
+        }
+
     }
 
-
-    private val differ = AsyncListDiffer(this, diffCallback)
-    fun submit(items: List<CartItemInterface>) {
-        differ.submitList(items)
-        notifyDataSetChanged()
+    fun submit(newItems: List<CartItemInterface>) {
+        Log.d("XXX", "NEW ITEMS .. $newItems")
+        val diffUtil = CartDiffUtil(items, newItems)
+        val diffResults = DiffUtil.calculateDiff(diffUtil)
+        items = newItems
+        diffResults.dispatchUpdatesTo(this)
     }
-
-    fun getItems() = differ.currentList
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoppingCartViewHolder {
         return ShoppingCartViewHolder(
@@ -67,7 +78,7 @@ class ShoppingCartAdapter @Inject constructor() :
     }
 
     override fun onBindViewHolder(holder: ShoppingCartViewHolder, position: Int) {
-        val item = getItems()[position]
+        val item = items[position]
         holder.binding.apply {
             when (showItemMenu) {
                 true -> ivMoreCartItem.show()
@@ -113,6 +124,6 @@ class ShoppingCartAdapter @Inject constructor() :
     }
 
     override fun getItemCount(): Int {
-        return getItems().size
+        return items.size
     }
 }
